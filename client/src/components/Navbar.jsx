@@ -23,20 +23,27 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-right">
+
           <ul className="nav-items">
-            <li className="nav-item">
-              <a href="/">
-                <FaHome />
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="/create-entry">
-                <FaPlus />
-              </a>
+
+            <li className="items-left">
+
+              <li className="nav-item">
+                <a href="/">
+                  <FaHome size={25}/>
+                </a>
+              </li>
+              <li className="nav-item">
+                <a href="/create-entry">
+                  <FaPlus size={25}/>
+                </a>
+              </li>
+            
             </li>
 
-            <li className="nav-item">
-              <a href="#">
+            <li className="nav-item dropdown">
+              
+            <a href="#">
                 {currentUser ? (
                   <div className="usuario">
                     <div className="usuarioImagen">
@@ -58,10 +65,7 @@ const Navbar = () => {
                   </>
                 )}
               </a>
-            </li>
 
-            <li className="nav-item dropdown">
-             
               <div className="dropdown-content">
                 <a href="#">Profile</a>
                 <a href="#">Settings</a>

@@ -16,8 +16,8 @@
 }
 
 .navbar-left img {
-  height: 16vh;
-  width: 50vh;
+  height: 29vh;
+  width: 65vh;
   margin-right: 10px;
   padding: 2rem;
 }
@@ -31,14 +31,23 @@
   list-style-type: none;
   display: flex;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 
 .nav-item a {
   display: flex;
   align-items: center;
+  flex-direction: column;
   text-decoration: none;
   color: inherit;
+}
+
+.items-left{
+  padding-top: 3.8vh;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 1.5rem;
 }
 
 .usuario{
@@ -73,5 +82,25 @@
 
 .nav-item.dropdown .dropdown-content a:hover {
   background-color: #f1f1f1;
+}
+
+.dropdown-content button{
+  border: none;
+  outline: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
+  position: absolute;
+  background-color: #ffffff;
+  color: #091e3d;
+  font-size: 16px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  padding: 2vh;
+  padding-left: 3vh;
+  z-index: 1;
 }
 
