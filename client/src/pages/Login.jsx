@@ -90,6 +90,8 @@ const Login = () => {
         />
         <button onClick={handleSubmit}>Iniciar Sesion</button>
         {err && <p>{err}</p>}
+
+
         {profile ? (
         <div>
           <img src={profile.picture} alt="user image" />
@@ -103,6 +105,8 @@ const Login = () => {
       ) : (
         <button onClick={() => loginGoogle()}>Sign in with Google 🚀 </button>
       )}
+
+
         <span>
           No tienes una cuenta? <Link to="/register">Registrate</Link>
         </span>

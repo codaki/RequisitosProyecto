@@ -14,14 +14,11 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="links">
-          <Link className="link">
+          <Link className="link" to="/?cat=arte">
             <h6>Calendario</h6>
           </Link>
-          <Link className="link">
-            <h6>Lista</h6>
-          </Link>
-          <Link className="link">
-            <h6>Perfil</h6>
+          <Link className="link" to="/?cat=arte">
+            <h6>Calendario</h6>
           </Link>
           <span>{currentUser?.username}</span>
           {currentUser ? (
