@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    background-color: rgb(248, 248, 248);
+  }
+  
+  .page {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    color: #091e3d;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    min-height: 100vh;
+  }
+  
+  .page-left,
+  .page-center,
+  .page-right {
+    padding: 20px;
+  }
+  
+  .dashboard,
+  .sidebar {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard h2,
+  .sidebar h2 {
+    font-family: 'Josefin Slab', serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard p,
+  .sidebar p {
+    margin: 5px 0;
+  }
+  
+  .calendar-container {
+    background-color: #f8f8f8;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    font-size: 18px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .calendar-title {
+    color: #091e3d;
+    margin-bottom: 10px;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+  }
+  
+  .calendar-cell {
+    background-color: #ffffff;
+    color: #091e3d;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .movie-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .movie-image {
+    width: 90px;
+    height: 140px;
+    margin-right: 10px;
+  }
+  
+  .movie-name {
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    color: #091e3d;
+    font-size: 16px;
+  }
+  

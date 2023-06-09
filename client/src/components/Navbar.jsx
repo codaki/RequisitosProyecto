@@ -1,39 +1,43 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
-import Logo from "../img/logo3.png";
+import React from "react";
+import { FaHome, FaUser, FaPlus } from 'react-icons/fa';
+import "../styles/NavBar.css"
 
 const Navbar = () => {
-  const { currentUser, logout } = useContext(AuthContext);
+ 
   return (
-    <div className="navbar">
-      <div className="container">
-        <div className="logo">
-          <Link to="/">
-            <img src={Logo} alt="" />
-          </Link>
-        </div>
-        <div className="links">
-          <Link className="link">
-            <h6>Calendario</h6>
-          </Link>
-          <Link className="link">
-            <h6>Lista</h6>
-          </Link>
-          <Link className="link">
-            <h6>Perfil</h6>
-          </Link>
-          <span>{currentUser?.username}</span>
-          {currentUser ? (
-            <span onClick={logout}>Cerrar Sesion</span>
-          ) : (
-            <Link className="link" to="/login">
-              Inicio Sesion
-            </Link>
-          )}
-        </div>
-      </div>
-    </div>
+    <div class="navbar-container">
+    <nav className="navbar">
+       <div className="navbar-left">
+           <img src= {require("../img/Logo.png")} alt="Logo" />
+       </div>
+ 
+       <div className="navbar-center"></div>
+       <div className="navbar-right">
+         <ul className="nav-items">
+           <li className="nav-item">
+             <a href="/">
+               <FaHome />
+             </a>
+           </li>
+           <li className="nav-item">
+             <a href="/create-entry">
+               <FaPlus />
+             </a>
+           </li>
+           <li className="nav-item dropdown">
+             <a href="#">
+               <FaUser />
+             </a>
+             <div className="dropdown-content">
+               <a href="#">Profile</a>
+               <a href="#">Settings</a>
+               <a href="#">Logout</a>
+             </div>
+           </li>
+         </ul>
+       </div>
+     </nav>
+ </div>
   );
 };
 export default Navbar;
