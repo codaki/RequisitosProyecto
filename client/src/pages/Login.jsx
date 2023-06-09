@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect} from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Edit from "../img/logo3.png";
@@ -7,15 +7,32 @@ import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
 const Login = () => {
-  const [profile, setProfile] = useState([]);
-  const [user, setUser] = useState([]);
+  const [err, setError] = useState(null);
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const { loginGoogleAuth } = useContext(AuthContext);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await login(inputs);
+      navigate("/");
+    } catch (err) {
+      setError(err.response.data);
+    }
+  };
+  const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState([]);
+  
 
   const loginGoogle = useGoogleLogin({
-    onSuccess: (codeResponse) => setUser(codeResponse),
+    onSuccess: (codeResponse) => {setUser(codeResponse);},
     onError: (error) => console.log('Login Failed:', error)
   });
 
@@ -31,6 +48,12 @@ const Login = () => {
           })
           .then((res) => {
             setProfile(res.data);
+            try{
+              loginGoogleAuth(res.data);
+              navigate("/");
+            }catch (err) {
+              setError(err.response.data);
+            }
           })
           .catch((err) => console.log(err));
       }
@@ -40,22 +63,6 @@ const Login = () => {
   const logOutGoogle = () => {
     googleLogout();
     setProfile(null);
-  };
-
-  const [err, setError] = useState(null);
-  const navigate = useNavigate();
-  const { login } = useContext(AuthContext);
-  const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await login(inputs);
-      navigate("/");
-    } catch (err) {
-      setError(err.response.data);
-    }
   };
   return (
     <div className="auth">
@@ -89,24 +96,8 @@ const Login = () => {
           onChange={handleChange}
         />
         <button onClick={handleSubmit}>Iniciar Sesion</button>
-        {err && <p>{err}</p>}
-
-
-        {profile ? (
-        <div>
-          <img src={profile.picture} alt="user image" />
-          <h3>User Logged in</h3>
-          <p>Name: {profile.name}</p>
-          <p>Email Address: {profile.email}</p>
-          <br />
-          <br />
-          <button onClick={logOutGoogle}>Log out</button>
-        </div>
-      ) : (
         <button onClick={() => loginGoogle()}>Sign in with Google 🚀 </button>
-      )}
-
-
+        {err && <p>{err}</p>}
         <span>
           No tienes una cuenta? <Link to="/register">Registrate</Link>
         </span>

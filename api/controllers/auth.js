@@ -32,7 +32,7 @@ export const register = (req, res) => {
 export const login = (req, res) => {
     //CHECK USER
 
-    const q = "SELECT * FROM users WHERE username = ?";
+    const q = "SELECT * FROM users WHERE name = ?";
 
     db.query(q, [req.body.username], (err, data) => {
         if (err) return res.status(500).json(err);
@@ -55,7 +55,15 @@ export const login = (req, res) => {
             })
             .status(200).json(other);
     });
+}
 
+export const loginGoogle = (req, res) => {
+    const token = jwt.sign({ id: req.body.id }, "jwtkey");
+    const { password, ...other } = req.body;
+    res.cookie("access_token", token, {
+        httpOnly: true,
+    })
+    .status(200).json(other);
 }
 
 export const logout = (req, res) => {
