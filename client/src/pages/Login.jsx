@@ -1,13 +1,47 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import Edit from "../img/logo3.png";
 
+import { googleLogout, useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
+
 const Login = () => {
+  const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState([]);
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
   });
+
+  const loginGoogle = useGoogleLogin({
+    onSuccess: (codeResponse) => setUser(codeResponse),
+    onError: (error) => console.log('Login Failed:', error)
+  });
+
+  useEffect(
+    () => {
+      if (user) {
+        axios
+          .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: 'application/json'
+            }
+          })
+          .then((res) => {
+            setProfile(res.data);
+          })
+          .catch((err) => console.log(err));
+      }
+    },
+    [user]
+  );
+  const logOutGoogle = () => {
+    googleLogout();
+    setProfile(null);
+  };
+
   const [err, setError] = useState(null);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -56,11 +90,23 @@ const Login = () => {
         />
         <button onClick={handleSubmit}>Iniciar Sesion</button>
         {err && <p>{err}</p>}
+        {profile ? (
+        <div>
+          <img src={profile.picture} alt="user image" />
+          <h3>User Logged in</h3>
+          <p>Name: {profile.name}</p>
+          <p>Email Address: {profile.email}</p>
+          <br />
+          <br />
+          <button onClick={logOutGoogle}>Log out</button>
+        </div>
+      ) : (
+        <button onClick={() => loginGoogle()}>Sign in with Google 🚀 </button>
+      )}
         <span>
           No tienes una cuenta? <Link to="/register">Registrate</Link>
         </span>
       </form>
-          
     </div>
   );
 };
