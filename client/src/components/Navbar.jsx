@@ -22,7 +22,6 @@ const Navbar = () => {
           <img src={require("../img/logo.png")} alt="Logo" />
         </div>
 
-        <div className="navbar-center"></div>
         <div className="navbar-right">
           <ul className="nav-items">
             <li className="nav-item">
@@ -35,16 +34,21 @@ const Navbar = () => {
                 <FaPlus />
               </a>
             </li>
-            <li className="nav-item dropdown">
+
+            <li className="nav-item">
               <a href="#">
                 {currentUser ? (
-                  <div>
-                    <img src={currentUser?.picture} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {currentUser?.name}</p>
-                    <p>Email Address: {currentUser?.email}</p>
-                    <br />
-                    <br />
+                  <div className="usuario">
+                    <div className="usuarioImagen">
+                      <img src={currentUser?.picture} alt="user image" />
+                    </div>
+
+                    <div className="usuarioInfo">
+                      <h3>User Logged in</h3>
+                      <p>Name: {currentUser?.name}</p>
+                      <p>Email Address: {currentUser?.email}</p>
+                    </div>
+  
                   </div>
                 ) : (
                   <>
@@ -54,6 +58,10 @@ const Navbar = () => {
                   </>
                 )}
               </a>
+            </li>
+
+            <li className="nav-item dropdown">
+             
               <div className="dropdown-content">
                 <a href="#">Profile</a>
                 <a href="#">Settings</a>

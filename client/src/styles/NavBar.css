@@ -10,20 +10,16 @@
   background-color: #ffffff;
   color: #091e3d;
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
-  font-size: 18px;
+  font-size: 1.1rem;
   height: 40vh;
-  padding: 20px;
+  padding: 1.5rem;
 }
 
 .navbar-left img {
-  height: 50px;
-  width: 150px;
+  height: 16vh;
+  width: 50vh;
   margin-right: 10px;
   padding: 2rem;
-}
-
-.navbar-center {
-  flex-grow: 1;
 }
 
 .navbar-right {
@@ -34,7 +30,8 @@
 .nav-items {
   list-style-type: none;
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .nav-item a {
@@ -42,6 +39,12 @@
   align-items: center;
   text-decoration: none;
   color: inherit;
+}
+
+.usuario{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nav-item.dropdown .dropdown-content {
@@ -71,3 +74,4 @@
 .nav-item.dropdown .dropdown-content a:hover {
   background-color: #f1f1f1;
 }
+
