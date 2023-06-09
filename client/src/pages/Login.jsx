@@ -6,6 +6,9 @@ import LogoMov from "../img/LogoMov.jpeg"
 import Vaca1 from "../img/vaca1.png"
 import Vaca2 from "../img/vaca2.png"
 import Goo from "../img/google.png"
+import person from "../img/person.png"
+import lock from "../img/lock.png"
+import correo from "../img/correo.png"
 
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
@@ -39,7 +42,7 @@ const Login = () => {
       setError(err.response.data);
     }
   };
-    const handleSignInClick = () => {
+  const handleSignInClick = () => {
     setSignUpMode(false);
   };
 
@@ -55,43 +58,43 @@ const Login = () => {
     setSignUpMode2(true);
   };
 
-    const [profile, setProfile] = useState([]);
-    const [user, setUser] = useState([]);
+  const [profile, setProfile] = useState([]);
+  const [user, setUser] = useState([]);
 
 
-    const loginGoogle = useGoogleLogin({
-      onSuccess: (codeResponse) => { setUser(codeResponse); },
-      onError: (error) => console.log('Login Failed:', error)
-    });
+  const loginGoogle = useGoogleLogin({
+    onSuccess: (codeResponse) => { setUser(codeResponse); },
+    onError: (error) => console.log('Login Failed:', error)
+  });
 
-    useEffect(
-      () => {
-        if (user) {
-          axios
-            .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-              headers: {
-                Authorization: `Bearer ${user.access_token}`,
-                Accept: 'application/json'
-              }
-            })
-            .then((res) => {
-              setProfile(res.data);
-              try {
-                loginGoogleAuth(res.data);
-                navigate("/");
-              } catch (err) {
-                setError(err.response.data);
-              }
-            })
-            .catch((err) => console.log(err));
-        }
-      },
-      [user]
-    );
-    const logOutGoogle = () => {
-      googleLogout();
-      setProfile(null);
-    };
+  useEffect(
+    () => {
+      if (user) {
+        axios
+          .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+            headers: {
+              Authorization: `Bearer ${user.access_token}`,
+              Accept: 'application/json'
+            }
+          })
+          .then((res) => {
+            setProfile(res.data);
+            try {
+              loginGoogleAuth(res.data);
+              navigate("/");
+            } catch (err) {
+              setError(err.response.data);
+            }
+          })
+          .catch((err) => console.log(err));
+      }
+    },
+    [user]
+  );
+  const logOutGoogle = () => {
+    googleLogout();
+    setProfile(null);
+  };
 
   return (
     <div className={`container ${signUpMode ? 'sign-up-mode' : ''} ${signUpMode2 ? 'sign-up-mode2' : ''}`}>
@@ -102,6 +105,7 @@ const Login = () => {
           <br></br>
           <h2 className="title">Iniciar Sesion</h2>
           <div className="input-field">
+            <img className="person" src={person} />
             <i className="fas fa-user"></i>
             <input required
               type="text"
@@ -110,6 +114,7 @@ const Login = () => {
               placeholder="Usuario..." />
           </div>
           <div className="input-field">
+            <img className="person" src={lock} />
             <i className="fas fa-lock"></i>
             <input
               required
@@ -134,14 +139,17 @@ const Login = () => {
           <br></br>
           <h2 className="title">Crea tu cuenta</h2>
           <div className="input-field">
+            <img className="person" src={person} />
             <i className="fas fa-user"></i>
             <input type="text" placeholder="Usuario..." />
           </div>
           <div className="input-field">
             <i className="fas fa-envelope"></i>
+            <img className="person" src={correo} />
             <input type="text" placeholder="Correo..." />
           </div>
           <div className="input-field">
+            <img className="person" src={lock} />
             <i className="fas fa-lock"></i>
             <input type="password" placeholder="Contraseña..." />
           </div>
