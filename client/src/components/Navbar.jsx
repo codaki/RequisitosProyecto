@@ -14,23 +14,14 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="links">
-          <Link className="link" to="/?cat=arte">
-            <h6>ARTE</h6>
+          <Link className="link">
+            <h6>Calendario</h6>
           </Link>
-          <Link className="link" to="/?cat=fisica">
-            <h6>FISICA</h6>
+          <Link className="link">
+            <h6>Lista</h6>
           </Link>
-          <Link className="link" to="/?cat=computacion">
-            <h6>COMPUTACION</h6>
-          </Link>
-          <Link className="link" to="/?cat=quimica">
-            <h6>QUIMICA</h6>
-          </Link>
-          <Link className="link" to="/?cat=calculo">
-            <h6>CALCULO</h6>
-          </Link>
-          <Link className="link" to="/?cat=matematicas">
-            <h6>MATEMATICAS</h6>
+          <Link className="link">
+            <h6>Perfil</h6>
           </Link>
           <span>{currentUser?.username}</span>
           {currentUser ? (
@@ -40,11 +31,6 @@ const Navbar = () => {
               Inicio Sesion
             </Link>
           )}
-          <span className="write">
-            <Link className="link" to="/write">
-              Escribe
-            </Link>
-          </span>
         </div>
       </div>
     </div>
