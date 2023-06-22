@@ -33,34 +33,27 @@ body {
 }
 
 .logomov{
-    width: 20vw;
-    height: 14vh;
-    padding-top: 0mm;
+    width: 85%;
 }
 
 .vaca1{
-    width: 22vw;
-    height: 40vh;
+    width: 100%;
     padding-top: 0mm;
 }
 .vaca2{
-    width: 20vw;
-    height: 40vh;
+    width: 100%;
     padding-top: 0mm;
     padding-bottom: 0mm;
 }
 
 .goo{
-    width: 2.1vw;
-    height: 4.5vh;
+    width: 90%
 
 }
 .person{
     position: absolute;
-    width: 3.4vw;
-    height: 4.5vh;
+    width: 5.5%;
     padding-left: 1.3vw;
-
 }
 .goo:hover{
     width: 2.3vw;
@@ -118,7 +111,7 @@ form.sign-up-form {
 
 .title {
     font-family: 'Chewy';
-    font-size: 6vh;
+    font-size: 190%;
     color: #003049;
     margin-bottom: 10px;
 }
@@ -241,8 +234,7 @@ a {
 }
 
 .panel h3 {
-    font-size: 6vh;
-    font-weight: 600;
+    font-size: 220%;
     font-family: 'Chewy';
 }
 
@@ -313,11 +305,19 @@ a {
         width: 100vw;
         height: 100vh;
     }
+    .logomov{
+        width: 100%;
+    }
 }
 
 @media (max-width:635px) {
     .container::before {
         display: none;
+    }
+    .person{
+        position: absolute;
+        width: 8%;
+        padding-left: 1.3vw;
     }
     form {
         width: 80%;

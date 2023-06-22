@@ -124,7 +124,7 @@ const Login = () => {
               placeholder="Contraseña..." />
           </div>
           <input onClick={handleSubmit} type="submit" value="Ingresar" className="btn" />
-          <p className="social-text">Or Sign in with social platform</p>
+          <p className="social-text">O Ingresa con tu cuenta de GOOGLE</p>
           <div className="social-media">
             <a href="#" onClick={() => loginGoogle()} className="social-icon">
               <img className="goo" src={Goo} alt="Ejemplo" />
