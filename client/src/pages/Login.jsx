@@ -26,12 +26,13 @@ const Login = () => {
   const [inputs, setInputs] = useState({
     username: "",
     password: "",
+    email:"",
   });
 
   const [isFormIncomplete, setIsFormIncomplete] = useState(false);
   const [isForm2Incomplete, setIsForm2Incomplete] = useState(false);
 
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!inputs.username || !inputs.password) {
@@ -48,11 +49,10 @@ const Login = () => {
 
   const handleSubmit2 = (e) => {
     e.preventDefault();
-    if (!inputs.username || !inputs.password) {
+    if (!inputs.username || inputs.email || !inputs.password) {
       setIsForm2Incomplete(true);
       return;
     }
-    // Resto del código para el segundo formulario
   };
 
 
@@ -158,21 +158,30 @@ const Login = () => {
           <div className="input-field">
             <img className="person" src={person} />
             <i className="fas fa-user"></i>
-            <input type="text" placeholder="Usuario..." />
+            <input required
+              type="text"
+              name="username"
+              onChange={handleChange}
+              placeholder="Usuario..." />
           </div>
           <div className="input-field">
             <i className="fas fa-envelope"></i>
             <img className="person" src={correo} />
-            <input type="text" placeholder="Correo..." />
+            <input required
+              name="email"
+              onChange={handleChange}
+              type="text"
+              placeholder="Correo..." />
           </div>
           <div className="input-field">
             <img className="person" src={lock} />
             <i className="fas fa-lock"></i>
-            <input type="password" placeholder="Contraseña..." />
+            <input required
+              name="password"
+              onChange={handleChange}
+              type="password"
+              placeholder="Contraseña..." />
           </div>
-          {isForm2Incomplete && (
-            <div className="alert-danger">Por favor, complete todos los campos.</div>
-          )}
           <input type="submit" value="Registrarme" className="btn" />
           <p className="social-text">O ingresa con una red social</p>
           <div className="social-media">
