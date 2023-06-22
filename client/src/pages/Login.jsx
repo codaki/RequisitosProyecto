@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 import './Login.scss';
-import LogoMov from "../img/LogoMov.jpeg"
+import LogoMov from "../img/logo.png"
 import Vaca1 from "../img/vaca1.png"
 import Vaca2 from "../img/vaca2.png"
 import Goo from "../img/google.png"
@@ -12,9 +12,6 @@ import correo from "../img/correo.png"
 
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
-
-
-
 
 const Login = () => {
   const [signUpMode, setSignUpMode] = useState(false);
@@ -31,10 +28,16 @@ const Login = () => {
     password: "",
   });
 
+  const [isFormIncomplete, setIsFormIncomplete] = useState(false);
+  const [isForm2Incomplete, setIsForm2Incomplete] = useState(false);
 
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!inputs.username || !inputs.password) {
+      setIsFormIncomplete(true);
+      return;
+    }
     try {
       await login(inputs);
       navigate("/");
@@ -42,6 +45,17 @@ const Login = () => {
       setError(err.response.data);
     }
   };
+
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
+    if (!inputs.username || !inputs.password) {
+      setIsForm2Incomplete(true);
+      return;
+    }
+    // Resto del código para el segundo formulario
+  };
+
+
   const handleSignInClick = () => {
     setSignUpMode(false);
   };
@@ -61,36 +75,33 @@ const Login = () => {
   const [profile, setProfile] = useState([]);
   const [user, setUser] = useState([]);
 
-
   const loginGoogle = useGoogleLogin({
     onSuccess: (codeResponse) => { setUser(codeResponse); },
     onError: (error) => console.log('Login Failed:', error)
   });
 
-  useEffect(
-    () => {
-      if (user) {
-        axios
-          .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: 'application/json'
-            }
-          })
-          .then((res) => {
-            setProfile(res.data);
-            try {
-              loginGoogleAuth(res.data);
-              navigate("/");
-            } catch (err) {
-              setError(err.response.data);
-            }
-          })
-          .catch((err) => console.log(err));
-      }
-    },
-    [user]
-  );
+  useEffect(() => {
+    if (user) {
+      axios
+        .get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+          headers: {
+            Authorization: `Bearer ${user.access_token}`,
+            Accept: 'application/json'
+          }
+        })
+        .then((res) => {
+          setProfile(res.data);
+          try {
+            loginGoogleAuth(res.data);
+            navigate("/");
+          } catch (err) {
+            setError(err.response.data);
+          }
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [user]);
+
   const logOutGoogle = () => {
     googleLogout();
     setProfile(null);
@@ -123,6 +134,11 @@ const Login = () => {
               type="password"
               placeholder="Contraseña..." />
           </div>
+          {/* VALIDACION */}
+          {isFormIncomplete && (
+            <div className="alert-danger">Por favor, complete todos los campos.</div>
+          )}
+
           <input onClick={handleSubmit} type="submit" value="Ingresar" className="btn" />
           <p className="social-text">O Ingresa con tu cuenta de GOOGLE</p>
           <div className="social-media">
@@ -131,10 +147,11 @@ const Login = () => {
             </a>
           </div>
           <p className="account-text">
-            No tienes una cuenta? <a href="#" onClick={handleSignUpClick2}>Registrate</a>
+            No tienes una cuenta? <a className="enlace" href="#" onClick={handleSignUpClick2}>Registrate</a>
           </p>
         </form>
-        <form action="" className="sign-up-form">
+        {/* SEGUNDO FORMULARIO */}
+        <form action="" className="sign-up-form" onSubmit={handleSubmit2}>
           <img className="logomov" src={LogoMov} alt="Ejemplo" />
           <br></br>
           <h2 className="title">Crea tu cuenta</h2>
@@ -153,6 +170,9 @@ const Login = () => {
             <i className="fas fa-lock"></i>
             <input type="password" placeholder="Contraseña..." />
           </div>
+          {isForm2Incomplete && (
+            <div className="alert-danger">Por favor, complete todos los campos.</div>
+          )}
           <input type="submit" value="Registrarme" className="btn" />
           <p className="social-text">O ingresa con una red social</p>
           <div className="social-media">
@@ -161,7 +181,7 @@ const Login = () => {
             </a>
           </div>
           <p className="account-text">
-            Ya tienes una cuenta? <a href="#" onClick={handleSignInClick2}>Iniciar sesion</a>
+            Ya tienes una cuenta? <a className="enlace" href="#" onClick={handleSignInClick2}>Iniciar sesion</a>
           </p>
         </form>
       </div>
@@ -171,7 +191,7 @@ const Login = () => {
             <h3>Acaso ya tienes cuenta?</h3>
             <p>Inicia sesion con tu cuenta</p>
             <img className="vaca2" src={Vaca2} alt="Ejemplo" />
-            <button className="btn" onClick={handleSignInClick}>Ingresar</button>
+            <button className="btn2" onClick={handleSignInClick}>Ingresar</button>
           </div>
           <img src="signin.svg" alt="" className="image" />
         </div>
@@ -180,7 +200,7 @@ const Login = () => {
             <h3>Eres nuevo?</h3>
             <img className="vaca1" src={Vaca1} alt="Ejemplo" />
             <p>Forma parte de nuestro equipo</p>
-            <button className="btn" onClick={handleSignUpClick}>Registrate</button>
+            <button className="btn2" onClick={handleSignUpClick}>Registrate</button>
           </div>
           <img src="signup.svg" alt="" className="image" />
         </div>
@@ -188,48 +208,4 @@ const Login = () => {
     </div>
   );
 };
-
-
-
-
-// return (
-//   <div className="auth">
-//     <Link to="/">
-//       <img src={Edit} alt="logo" width="350px" border="0" />
-//     </Link>
-//     <form>
-//       <center>
-//         <h1>Inicio Sesion</h1>
-//       </center>
-//       <center>
-//         <img
-//           src="https://cdn-icons-png.flaticon.com/512/1177/1177568.png"
-//           alt="usuario"
-//           width="100px"
-//           border="0"
-//         />
-//       </center>
-//       <input
-//         required
-//         type="text"
-//         placeholder="usuario"
-//         name="username"
-//         onChange={handleChange}
-//       />
-//       <input
-//         required
-//         type="password"
-//         placeholder="Contraseña"
-//         name="password"
-//         onChange={handleChange}
-//       />
-//       <button onClick={handleSubmit}>Iniciar Sesion</button>
-//       {err && <p>{err}</p>}
-//       <span>
-//         No tienes una cuenta? <Link to="/register">Registrate</Link>
-//       </span>
-//     </form>
-//         
-//   </div>
-// );
 export default Login;
