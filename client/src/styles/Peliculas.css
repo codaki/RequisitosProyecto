@@ -1,16 +1,16 @@
 
 .viewtrailer{
-    min-height: 90vh;
-    max-width: 100vw;
     background-size: cover;
     background-position:center;
     display: flex;
     align-items: flex-end;
-  }
-  .lolo{
-    background-color: #0F1014;
+    min-height: 40vw;
+
   }
 
+.casdf{
+  height: 200%;
+}
   .boton{
     background-color: #003049;
     color: white;
@@ -22,9 +22,21 @@
     font-size: 190%;
     margin-bottom: 10px;
   }
+  .boton2{
+    background-color: #8e0b0b;
+    position: absolute;
+    color: white;
+    font-family: "Chewy";
+    outline: none;
+    border: 1px solid white;
+    padding: 0.7%;
+    cursor: pointer;
+    font-size: 190%;
+    margin-bottom: 10px;
+  }
   .reproductor{
-    width: 100%;
-    heigth:100%;
+    height: 40vw;
+    width: 99vw;
   }
   .titulo88{
     color: #fdfdfd;
@@ -41,6 +53,7 @@
   .bloquedes{
     background-color: #0f1014c6;
     height: 100%;
+    width: 100%;
   }
 
 
@@ -52,40 +65,92 @@
   }
   .btnbuscar{
     font-family: 'Chewy';
-    align-items: center;
-    width: 100%;
+    position:absolute;
     border: none;
-    border-radius: 50px;
-    background: #003049;
-    color: #fff;
-    margin: 10px 0;
+    color: #078ae1;
     text-transform: uppercase;
     cursor: pointer;
-    font-size: 190%;
+    font-size: 150%;
+    padding-left: 90%;
+
   }
   .espaciobuscar{
     padding-left: 2%;
     font-family: 'Chewy';
-    width: 100%;
+    position: absolute;
+    width: 97%;
     border-radius: 50px;
     background: #ffffff;
     color: #003049;
-    font-size: 190%;
+    font-size: 150%;
+
   }
 
-  .asdfasdf{
-    display: flex;
-    padding-left: 2%;
-    padding-right: 2%;
+  .asdfasdf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px; 
+    
   }
-  .asdfasdf img{
-    height:70%;
-    width:100%;
+  
+  .asdfasdf div {
+    background-color: #003049;
+    border-radius: 5%;
 
+  }
+  
+  .asdfasdf div img {
+    width: 100%;
+    height: 80%;
+  }
+  
+  .text-center {
+    text-align: center;
+    padding-top: 8%;
+    padding-left: 3%;
+    padding-right: 3%;
   }
   .asdfasdf h4{
-    font-family: 'Chewy';
-    font-size: 250%;
-    background-color: #003049;
-    color: #fff;
+    font-size: 200%;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    color: rgb(255, 255, 255);
+  }
+
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    border-color: #003049;
+    border-radius: 20px;
+    padding: 4px 8px;
+    width: 100%;
+  }
+
+  .search-bar:hover {
+    box-shadow: 0 0 5px rgba(4, 86, 201, 0.3);
+  }
+  
+  .search-bar input[type="text"] {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .search-bar button {
+    border: none;
+    background-color: transparent;
+    padding: 8px;
+    cursor: pointer;
+  }
+  
+  .search-bar button:focus {
+    outline: none;
+  }
+  
+  .search-bar button:hover {
+    color: #0b689a;
   }

@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import '../styles/Peliculas.css'
 import YouTube from "react-youtube";
+import { FaDoorClosed, FaDoorOpen, FaSearch } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 const Peliculas = () => {
   const API_URL = "https://api.themoviedb.org/3";
@@ -75,14 +76,19 @@ const Peliculas = () => {
       <div className="centro">
         <form onSubmit={searchMovies}>
           <br></br>
-
+          {/* 
           <input className="espaciobuscar " type="text" placeholder="Escribe tu pelicula..." onChange={(e) => setSearchKey(e.target.value)} />
-          <button className="btnbuscar">Buscar</button>
+          <button className="btnbuscar"><FaSearch size={25} /></button> */}
+          <div class="search-bar">
+            <input type="text" placeholder="Buscar en MOOVIE" onChange={(e) => setSearchKey(e.target.value)}/>
+              <button>Buscar</button>
+          </div>
         </form>
       </div>
+      <br></br>
 
       {/*Trailer de la pelicula*/}
-      <div>
+      <div className="trailer">
         <main>
           {movie ? (
             <div
@@ -112,8 +118,8 @@ const Peliculas = () => {
                       },
                     }}
                   />
-                  <button onClick={() => setPlaying(false)} className="boton">
-                    Close
+                  <button onClick={() => setPlaying(false)} className="boton2">
+                    <FaDoorClosed size={40} />
                   </button>
                 </>
               ) : (
@@ -125,7 +131,7 @@ const Peliculas = () => {
                         onClick={() => setPlaying(true)}
                         type="button"
                       >
-                        Play Trailer
+                        <FaDoorOpen size={40} />
                       </button>
                     ) : (
                       "Sorry, no trailer available"
@@ -145,16 +151,12 @@ const Peliculas = () => {
 
       {/*Peliculas*/}
       <div className="asdfasdf">
-        <div className="row">
-          {movies.map((movie) => (
-            <div className="col-md-4 mb-3" key={movie.id} onClick={() => selectMovie(movie)}>
-              <img
-                src={`${URL_IMAGE + movie.poster_path}`}
-              />
-              <h4 className="text-center">{movie.title}</h4>
-            </div>
-          ))}
-        </div>
+        {movies.map((movie) => (
+          <div key={movie.id} onClick={() => selectMovie(movie)}>
+            <img src={`${URL_IMAGE + movie.poster_path}`} />
+            <h4 className="text-center">{movie.title}</h4>
+          </div>
+        ))}
       </div>
     </div>
   );
