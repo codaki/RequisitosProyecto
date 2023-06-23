@@ -4,10 +4,10 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Prueba from "./components/DateCalendarServerRequest";
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Peliculas from "./pages/Peliculas";
+import Usuario from "./pages/Usuario";
 
 const Layout = () => {
   return (
@@ -28,8 +28,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
-      
-
+      {
+        path: "/Peliculas",
+        element: <Peliculas />,
+      },
+      {
+        path: "/Usuario",
+        element: <Usuario />,
+      },
     ],
   },
   {
@@ -39,12 +45,6 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-  },
-  {
-    path: "/calendario",
-    element: <Prueba />,
-    path: "/Peliculas",
-    element: <Peliculas />,
   },
 ]);
 
