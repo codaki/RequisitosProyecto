@@ -8,7 +8,7 @@ const Peliculas = () => {
   const API_KEY = "b5a699c46770633c9f806dd3d4c4af86";
   const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
   const URL_IMAGE = "https://image.tmdb.org/t/p/original";
-  
+
 
   const [movies, setMovies] = useState([]);
   const [searchKey, setSearchKey] = useState("");
@@ -17,7 +17,7 @@ const Peliculas = () => {
   const [playing, setPlaying] = useState(false);
 
   const fetchMovies = async (searchKey) => {
-    const type = searchKey?"search": "discover"  
+    const type = searchKey ? "search" : "discover"
     const {
       data: { results },
     } = await axios.get(`${API_URL}/${type}/movie`, {
@@ -29,8 +29,8 @@ const Peliculas = () => {
     setMovies(results);
     setMovie(results[0]);
     if (results.length) {
-        await fetchMovie(results[0].id);
-      }
+      await fetchMovie(results[0].id);
+    }
   };
 
   const fetchMovie = async (id) => {
@@ -60,7 +60,7 @@ const Peliculas = () => {
     setMovie(movie);
     window.scrollTo(0, 0);
   };
-  const  searchMovies = (e)=>{
+  const searchMovies = (e) => {
     e.preventDefault();
     fetchMovies(searchKey)
   }
@@ -69,16 +69,18 @@ const Peliculas = () => {
   }, []);
 
   return (
-    <div>
-        {/* Busqueda peliculas */}
-        <h2 className="text-center mt--5 mb-5">Trailer Movies</h2>
-        <form className="asdf" onSubmit={searchMovies}>
-            
-            <input type="text" placeholder="search" onChange={(e)=>setSearchKey(e.target.value)}/>
-            <button className="btn btn-primary">Buscar</button>
-        </form>
+    <div className="lolo">
+      {/* Busqueda peliculas */}
+      <h2 className="text-center">Trailer Movies</h2>
+      <div className="centro">
+        <form onSubmit={searchMovies}>
 
-           {/*Trailer de la pelicula*/}
+          <input className="espaciobuscar " type="text" placeholder="Escribe tu pelicula..." onChange={(e) => setSearchKey(e.target.value)} />
+          <button className="btnbuscar">Buscar</button>
+        </form>
+      </div>
+
+      {/*Trailer de la pelicula*/}
       <div>
         <main>
           {movie ? (
@@ -136,17 +138,15 @@ const Peliculas = () => {
           ) : null}
         </main>
       </div>
+      <br></br>
 
-        {/*Peliculas*/}
+      {/*Peliculas*/}
       <div className="asdfasdf">
         <div className="row">
           {movies.map((movie) => (
             <div className="col-md-4 mb-3" key={movie.id} onClick={() => selectMovie(movie)}>
               <img
                 src={`${URL_IMAGE + movie.poster_path}`}
-                alt=""
-                height={600}
-                width="100%"
               />
               <h4 className="text-center">{movie.title}</h4>
             </div>

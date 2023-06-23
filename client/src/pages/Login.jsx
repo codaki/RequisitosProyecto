@@ -9,6 +9,7 @@ import Goo from "../img/google.png"
 import person from "../img/person.png"
 import lock from "../img/lock.png"
 import correo from "../img/correo.png"
+import LogoMov2 from "../img/Logo-blanco.png"
 
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';

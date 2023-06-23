@@ -85,7 +85,11 @@ body {
     z-index: 5;
 }
 
-form {
+.sign-in-form {
+    opacity: 1;
+    transition: 0.5s ease-in-out;
+    transition-delay: 1s;
+    padding-top: 0mm;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -95,17 +99,18 @@ form {
     padding: 0 10px;
 }
 
-form.sign-in-form {
-    opacity: 1;
-    transition: 0.5s ease-in-out;
-    transition-delay: 1s;
-    padding-top: 0mm;
-}
-
-form.sign-up-form {
+.sign-up-form {
     opacity: 0;
     transition: 0.5s ease-in-out;
     transition-delay: 1s;
+    padding-top: 0mm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+    min-width: 238px;
+    padding: 0 10px;
 }
 
 .title {
@@ -338,11 +343,9 @@ a {
         width: 7%;
         padding-left: 1.3vw;
     }
-    form {
-        width: 80%;
-    }
-    form.sign-up-form {
+    .sign-up-form {
         display: none;
+        width: 80%;
     }
     .container.sign-up-mode2 form.sign-up-form {
         display: flex;
@@ -390,7 +393,7 @@ a {
 }
 
 @media (max-width:320px) {
-    form {
+    .sign-in-form {
         width: 90%;
     }
 }
