@@ -151,6 +151,7 @@ const Login = () => {
           )}
 
           <input onClick={handleSubmit} type="submit" value="Ingresar" className="btn" />
+          {err && <p>{err}</p>}
           <p className="social-text">O Ingresa con tu cuenta de GOOGLE</p>
           <div className="social-media">
             <a href="#" onClick={() => loginGoogle()} className="social-icon">
@@ -163,7 +164,9 @@ const Login = () => {
         </form>
         {/* SEGUNDO FORMULARIO */}
         <form action="" className="sign-up-form" onSubmit={handleSubmit2}>
+        
           <img className="logomov" src={LogoMov} alt="Ejemplo" />
+          {err && <p>{err}</p>}
           <br></br>
           <h2 className="title">Crea tu cuenta</h2>
           <div className="input-field">
