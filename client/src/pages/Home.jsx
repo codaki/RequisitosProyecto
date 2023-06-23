@@ -4,7 +4,7 @@ import { FaPlus } from 'react-icons/fa';
 import Prueba from "../components/DateCalendarServerRequest";
 import { useState,useEffect } from "react";
 import axios from "axios";
-
+import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
 
 
@@ -19,7 +19,7 @@ const Home = () => {
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Cargando Peliculas" });
   const [playing, setPlaying] = useState(false);
-
+  const navigate = useNavigate();
   const fetchMovies = async (searchKey) => {
     const type = searchKey ? "search" : "discover"
     const {
@@ -37,7 +37,9 @@ const Home = () => {
     //   await fetchMovie(results[0].id);
     // }
   };
-
+  const enviarCatalgo = async()=>{
+    navigate("/Peliculas")
+  }
   useEffect(() => {
     fetchMovies();
   }, []);
@@ -63,7 +65,7 @@ const Home = () => {
         <div className="asdfasdf">
         {movies.map((movie) => (
           <div key={movie.id} >
-            <img src={`${URL_IMAGE + movie.poster_path}`} />
+            <img src={`${URL_IMAGE + movie.poster_path}`}onClick={() => enviarCatalgo()} />
             <h4 className="text-center">{movie.title}</h4>
           </div>
         ))}
