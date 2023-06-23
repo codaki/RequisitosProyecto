@@ -125,6 +125,7 @@
     border-radius: 20px;
     padding: 4px 8px;
     width: 100%;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
   }
 
   .search-bar:hover {

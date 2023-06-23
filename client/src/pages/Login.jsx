@@ -126,7 +126,7 @@ const Login = () => {
           <img className="logomov" src={LogoMov} alt="Ejemplo" />
           <br></br>
           <br></br>
-          <h2 className="title">Iniciar Sesion</h2>
+          <h2 className="title">Iniciar Sesión</h2>
           <div className="input-field">
             <img className="person" src={person} />
             <i className="fas fa-user"></i>
@@ -160,7 +160,7 @@ const Login = () => {
             </a>
           </div>
           <p className="account-text">
-            No tienes una cuenta? <a className="enlace" href="#" onClick={handleSignUpClick2}>Registrate</a>
+            ¿No tienes una cuenta? <a className="enlace" href="#" onClick={handleSignUpClick2}>Registrate</a>
           </p>
         </form>
         {/* SEGUNDO FORMULARIO */}
@@ -205,15 +205,15 @@ const Login = () => {
             </a>
           </div>
           <p className="account-text">
-            Ya tienes una cuenta? <a className="enlace" href="#" onClick={handleSignInClick2}>Iniciar sesion</a>
+            ¿Ya tienes una cuenta? <a className="enlace" href="#" onClick={handleSignInClick2}>Iniciar sesión</a>
           </p>
         </form>
       </div>
       <div className="panels-container">
         <div className="panel left-panel">
           <div className="content">
-            <h3>Acaso ya tienes cuenta?</h3>
-            <p>Inicia sesion con tu cuenta</p>
+            <h3>¿Acaso ya tienes cuenta?</h3>
+            <p>Inicia sesión con tu cuenta</p>
             <img className="vaca2" src={Vaca2} alt="Ejemplo" />
             <button className="btn2" onClick={handleSignInClick}>Ingresar</button>
           </div>
@@ -221,10 +221,10 @@ const Login = () => {
         </div>
         <div className="panel right-panel">
           <div className="content">
-            <h3>Eres nuevo?</h3>
+            <h3>¿Eres nuevo?</h3>
             <img className="vaca1" src={Vaca1} alt="Ejemplo" />
             <p>Forma parte de nuestro equipo</p>
-            <button className="btn2" onClick={handleSignUpClick}>Registrate</button>
+            <button className="btn2" onClick={handleSignUpClick}>Regístrate</button>
           </div>
           <img src="signup.svg" alt="" className="image" />
         </div>
