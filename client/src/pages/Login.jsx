@@ -16,9 +16,7 @@ import axios from 'axios';
 const Login = () => {
   const [signUpMode, setSignUpMode] = useState(false);
   const [signUpMode2, setSignUpMode2] = useState(false);
-  const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
+  
   const [err, setError] = useState(null);
   const navigate = useNavigate();
   const { login } = useContext(AuthContext);
@@ -28,6 +26,19 @@ const Login = () => {
     password: "",
     email:"",
   });
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(inputs);
+      await axios.post("/auth/register", inputs);
+      window.location.reload();
+    } catch (err) {
+      setError(err.response.data);
+    }
+  };
 
   const [isFormIncomplete, setIsFormIncomplete] = useState(false);
   const [isForm2Incomplete, setIsForm2Incomplete] = useState(false);
@@ -182,7 +193,7 @@ const Login = () => {
               type="password"
               placeholder="Contraseña..." />
           </div>
-          <input type="submit" value="Registrarme" className="btn" />
+          <input type="submit" value="Registrarme" className="btn" onClick={handleRegister}/>
           <p className="social-text">O ingresa con una red social</p>
           <div className="social-media">
             <a href="#" onClick={() => loginGoogle()} className="social-icon">

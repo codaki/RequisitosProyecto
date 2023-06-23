@@ -60,7 +60,7 @@ const Register = () => {
           name="password"
           onChange={handleChange}
         />
-        <button onClick={handleSubmit}> Registrate</button>
+        <button onClick={handleSubmit}>Registrate</button>
         {err && <p>{err}</p>}
         <span>
           Tienes una cuenta? <Link to="/login">Inicio Sesion</Link>
