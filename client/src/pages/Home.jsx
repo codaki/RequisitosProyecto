@@ -28,18 +28,9 @@ const Home = () => {
     <div className="page-right">
       <div className="sidebar">
         {/* Add movie information updates here */}
-        <h2>Tus Películas</h2>
+        <h2>Películas Trending</h2>
         
-        <div class="movie-entry">
-          <img class="movie-image" src={require("../img/coraline.jpg")} alt="Movie 1"/>
-          <p class="movie-name">Coraline</p>
-        </div>
-
-        <div class="movie-entry">
-          <img class="movie-image" src={require("../img/jedi.jpg")} alt="Movie 2"/>
-          <p class="movie-name">Star Wars: El retorno del Jedi</p>
-        </div>
-
+        
 
       </div>
     </div>
