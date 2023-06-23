@@ -70,6 +70,7 @@ const Peliculas = () => {
 
   return (
     <div>
+        {/* Busqueda peliculas */}
         <h2 className="text-center mt--5 mb-5">Trailer Movies</h2>
         <form className="asdf" onSubmit={searchMovies}>
             
@@ -77,7 +78,7 @@ const Peliculas = () => {
             <button className="btn btn-primary">Buscar</button>
         </form>
 
-           {/* esto es por prueba */}
+           {/*Trailer de la pelicula*/}
       <div>
         <main>
           {movie ? (
@@ -136,7 +137,7 @@ const Peliculas = () => {
         </main>
       </div>
 
-
+        {/*Peliculas*/}
       <div className="asdfasdf">
         <div className="row">
           {movies.map((movie) => (
