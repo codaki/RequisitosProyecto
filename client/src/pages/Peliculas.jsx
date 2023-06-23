@@ -71,9 +71,10 @@ const Peliculas = () => {
   return (
     <div className="lolo">
       {/* Busqueda peliculas */}
-      <h2 className="text-center">Trailer Movies</h2>
+
       <div className="centro">
         <form onSubmit={searchMovies}>
+          <br></br>
 
           <input className="espaciobuscar " type="text" placeholder="Escribe tu pelicula..." onChange={(e) => setSearchKey(e.target.value)} />
           <button className="btnbuscar">Buscar</button>
@@ -94,7 +95,7 @@ const Peliculas = () => {
                 <>
                   <YouTube
                     videoId={trailer.key}
-                    className="reproductor container"
+                    className="reproductor"
                     containerClassName={"youtube-container amru"}
                     opts={{
                       width: "100%",
@@ -129,8 +130,10 @@ const Peliculas = () => {
                     ) : (
                       "Sorry, no trailer available"
                     )}
-                    <h1 className="text-white">{movie.title}</h1>
-                    <p className="text-white">{movie.overview}</p>
+                    <div className="bloquedes">
+                      <h1 className="titulo88">{movie.title}</h1>
+                      <p className="txt88">{movie.overview}</p>
+                    </div>
                   </div>
                 </div>
               )}
