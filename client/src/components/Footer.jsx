@@ -1,19 +1,51 @@
 import React from "react";
-import Carta from "../img/carta.png"
-import Llamada from "../img/llamada-telefonica.png"
-import Ubicacion from "../img/ubicacion.png"
+import "../styles/Footer.css"
+import { BsPinMap, BsFillEnvelopeAtFill, BsTelephone, BsWhatsapp, BsInstagram, BsFacebook } from 'react-icons/bs';
 
-const Footer =()=>{
-    return(
-        <footer>            
-            <img src={Ubicacion} alt="" />
-            <span>Universidad de las Fuerzas Armadas</span>
-            <img src={Carta} alt="" />
-            <span>help.ayudaestudiantil@gmail.com</span>
-            <img src={Llamada} alt="" />
-            <span>099 504 7657 - 096 963 6094</span>
-            
-            
+const Footer = () => {
+    return (
+        <footer>
+            <div class="piePagina">
+                <div>
+                    <div className="iconos">
+                        <figure>
+                            <a href="https://www.google.com/maps/">
+                                <BsPinMap size={25} />
+                            </a>
+                            <a href="https://mail.google.com/mail/">
+                                <BsFillEnvelopeAtFill size={25} />
+                            </a>
+                            <a href="https://www.e-supercines.com/contactos.php">
+                                <BsTelephone size={25} />
+                            </a>
+                            <a href="https://web.whatsapp.com/">
+                                <BsWhatsapp size={25} />
+                            </a>
+                            <a href="https://instagram.com/">
+                                <BsInstagram size={25} />
+                            </a>
+                            <a href="https://facebook.com/">
+                                <BsFacebook size={25} />
+                            </a>
+                        </figure>
+                    </div>
+
+                    <div>
+                        Copyright® 2023 Moovie, Inc.
+                    </div>
+                    <div className="textoFooter">
+                        <a href="https://www.e-supercines.com/preguntasfrecuentes.php">
+                            Información legal
+                        </a>
+                        <a href="/">
+                            |
+                        </a>
+                        <a href="https://www.e-supercines.com/politicasdeprivacidad.php">
+                            Política de privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
         </footer>
     )
 

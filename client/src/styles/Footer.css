@@ -1,0 +1,57 @@
+Footer {
+    width: 100%;
+}
+
+.piePagina li {
+    padding-top: 10px;
+}
+
+.piePagina .ulre {
+    font-size: 100%;
+}
+
+.piePagina {
+    display: grid;
+    place-items: center;
+    background-color: #62676e;
+    padding: 3vh 2vw 3vh 3vw;
+    text-align: center;
+}
+
+
+footer p {
+    text-align: center;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    background-color: #091e3d;
+    font-size: 3vw;
+    color: white;
+}
+
+.textoFooter {
+    color: black;
+    text-align: center;
+}
+
+.textoFooter a{
+    color: black;
+    text-align: center;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+.piePagina img {
+    width: 50px;
+}
+
+.ulre {
+    color: #fff;
+    text-decoration: none;
+}
+.iconos a{
+    padding-left: 1vw;
+    padding-right: 1vw;
+    color:black;
+}
+.iconos {
+    padding-bottom: 2vh;
+    color:black;
+}
