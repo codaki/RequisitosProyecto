@@ -1,4 +1,11 @@
-
+.gridcentrado{
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+.doscolumnas{
+  grid-template-columns: 70% 30%;
+}
 .viewtrailer{
     background-size: cover;
     background-position:center;
@@ -42,12 +49,13 @@
     color: #fdfdfd;
     text-align: center;
     padding-bottom: 0%;
-    font-family: "Chewy";
+    font-family:Georgia, 'Times New Roman', Times, serif;
   }
   .txt88{
     color: #fff;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 160%;
+    font-size: 1.5vw;
+    padding: 0 1.5em 0em 1.5em;
   }
 
   .bloquedes{
@@ -90,11 +98,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
     grid-gap: 20px; 
-    
+    padding: 0 1vw 3vh 1vw;
   }
   
   .asdfasdf div {
-    background-color: #003049;
+    background-color: #002f49d5;
     border-radius: 5%;
 
   }
@@ -103,7 +111,7 @@
     width: 100%;
     height: 80%;
   }
-  
+
   .text-center {
     text-align: center;
     padding-top: 8%;
@@ -122,10 +130,12 @@
     align-items: center;
     background-color: #f8f8f8;
     border-color: #003049;
+    border: 1px solid #003049;
     border-radius: 20px;
     padding: 4px 8px;
-    width: 100%;
+    width: 70%;
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    max-height: 7vh;
   }
 
   .search-bar:hover {
@@ -139,6 +149,17 @@
     font-family: 'Zen Kaku Gothic Antique', sans-serif;
     padding: 8px;
     font-size: 14px;
+  }
+  .search-bar .a_doble{
+    display: grid;
+    grid-template-columns: 25% 80%;
+    place-items: center;
+    text-align: center;
+    column-gap: 0.5vw;
+    padding-right: 1vw;
+  }
+  .search-bar .a_doble p{
+    padding-top: 3vh;
   }
   
   .search-bar button {
@@ -155,3 +176,27 @@
   .search-bar button:hover {
     color: #0b689a;
   }
+  .contenedorTabla{
+    width: 100%;
+    height: 100%;
+    padding: 0 1em 1em 1em;
+  }
+  .tablaDatosMovie {
+    width: 100%;
+    height: 100%;
+    padding-left: 1em;
+  }
+  
+  .tablaDatosMovie tr:nth-child(even) {
+    background-color: #272931c6;
+  }
+  
+  .tablaDatosMovie tr:nth-child(odd) {
+    background-color: #222224c6;
+  }
+  
+  .tablaDatosMovie td {
+    color: #ffffff;
+  padding-left: 1em;
+  }
+  

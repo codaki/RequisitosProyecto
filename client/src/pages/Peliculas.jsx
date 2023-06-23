@@ -79,10 +79,18 @@ const Peliculas = () => {
           {/* 
           <input className="espaciobuscar " type="text" placeholder="Escribe tu pelicula..." onChange={(e) => setSearchKey(e.target.value)} />
           <button className="btnbuscar"><FaSearch size={25} /></button> */}
-          <div class="search-bar">
-            <input type="text" placeholder="Buscar en MOOVIE" onChange={(e) => setSearchKey(e.target.value)}/>
-              <button>Buscar</button>
+          <div className="gridcentrado">
+            <div class="search-bar">
+              <input type="text" placeholder="Buscar en MOOVIE" onChange={(e) => setSearchKey(e.target.value)} />
+              <button>
+                <a className="a_doble">
+                  <FaSearch size={20} />
+                  <p>Buscar</p>
+                </a>
+              </button>
+            </div>
           </div>
+
         </form>
       </div>
       <br></br>
@@ -138,7 +146,29 @@ const Peliculas = () => {
                     )}
                     <div className="bloquedes">
                       <h1 className="titulo88">{movie.title}</h1>
-                      <p className="txt88">{movie.overview}</p>
+                      <div className="gridcentrado doscolumnas">
+                        <p className="txt88">{movie.overview}</p>
+                        <div className="contenedorTabla">
+                        <table className="tablaDatosMovie">
+                          <tr>
+                            <td>Puntuación Por Usuarios: </td>
+                            <td>{movie.vote_average}</td>
+                          </tr>
+                          <tr>
+                            <td>Idioma Original: </td>
+                            <td>{movie.original_language}</td>
+                          </tr>
+                          <tr>
+                            <td>Fecha de Estreno: </td>
+                            <td>{movie.release_date}</td>
+                          </tr>
+                          <tr>
+                            <td>Duración: </td>
+                            <td>{movie.runtime} minutos.</td>
+                          </tr>
+                        </table>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -152,7 +182,7 @@ const Peliculas = () => {
       {/*Peliculas*/}
       <div className="asdfasdf">
         {movies.map((movie) => (
-          <div key={movie.id} onClick={() => selectMovie(movie)}>
+          <div key={movie.id} onClick={() => selectMovie(movie)} className="tamanios">
             <img src={`${URL_IMAGE + movie.poster_path}`} />
             <h4 className="text-center">{movie.title}</h4>
           </div>
