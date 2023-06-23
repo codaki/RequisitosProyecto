@@ -60,7 +60,32 @@ export const login = (req, res) => {
 
 export const loginGoogle = (req, res) => {
     const token = jwt.sign({ id: req.body.id }, "jwtkey");
-    const { password, ...other } = req.body;
+    console.log(req.body);
+    const { ...other } = req.body;
+    
+    
+    const q = "SELECT * FROM users WHERE email = ? OR name = ?";
+
+    db.query(q, [req.body.email, req.body.username], (err, data) => {
+        if (err) return res.status(500).json(err);;
+        
+        if (data.length)
+        {
+
+        } else {
+            const q = "INSERT INTO users(name,email,password,picture) VALUES (?);";
+            const values = [
+                req.body.name,
+                req.body.email,
+                req.body.id,
+                req.body.picture];
+    
+            db.query(q, [values], (err, data) => {
+                if (err) return console.log(err);
+            });
+        }
+    });
+    
     res.cookie("access_token", token, {
         httpOnly: true,
     })
