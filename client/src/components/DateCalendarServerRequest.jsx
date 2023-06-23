@@ -73,7 +73,7 @@ export default function DateCalendarServerRequest() {
 
     requestAbortController.current = controller;
   };
-
+  
   React.useEffect(() => {
     fetchHighlightedDays(initialValue);
     // abort request on unmount
