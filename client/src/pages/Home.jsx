@@ -7,13 +7,7 @@ const Home = () => {
 
   return (
     <div className="page">
-    <div className="page-left">
-      <div className="dashboard">
-        {/* Add your calendar component and entry option here */}
-        <h2>¿Has visto algo nuevo?</h2>
-        <p> <FaPlus /> Agrega una entrada</p>
-      </div>
-    </div>
+    
     <div className="page-center">
       <div className="dashboard">
         {/* Add your calendar component here */}
