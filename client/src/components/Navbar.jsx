@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
-import { FaHome, FaUser, FaPlus } from 'react-icons/fa';
+import { FaHome, FaUser, FaPlus, FaFilm } from 'react-icons/fa';
 import "../styles/NavBar.css"
 
 import { googleLogout, useGoogleLogin } from '@react-oauth/google';
@@ -14,11 +14,15 @@ const Navbar = () => {
     googleLogout();
     logout();
   };
+  const handleDivClick = () => {
+    // Redirect to another site
+    window.location.href = '/';
+  };
 
   return (
     <div class="navbar-container">
       <nav className="navbar">
-        <div className="navbar-left">
+        <div className="navbar-left" onClick={handleDivClick} style={{ cursor: 'pointer' }}>
           <img src={require("../img/logo.png")} alt="Logo" />
         </div>
 
@@ -29,48 +33,39 @@ const Navbar = () => {
             <li className="items-left">
 
               <li className="nav-item">
-                <a href="/">
-                  <FaHome size={25}/>
+                <a href="/" className="a_doble">
+                  <FaHome size={25} />
+                  <p>Inicio</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="/create-entry">
-                  <FaPlus size={25}/>
+                <a href="/Peliculas" className="a_doble">
+                  <FaFilm size={25} />
+                  <p>Catálogo</p>
                 </a>
               </li>
-            
-            </li>
+              <li className="nav-item">
+                {currentUser ? (<li className="nav-item dropdown">
+                  <a href="#" className="a_doble">
+                    <FaUser size={25} className="a_icon" />
+                    <p>{currentUser?.name}</p>
+                  </a>
 
-            <li className="nav-item dropdown">
-              
-            <a href="#">
-                {currentUser ? (
-                  <div className="usuario">
-                    <div className="usuarioImagen">
-                      <img src={currentUser?.picture} alt="user image" />
-                    </div>
-
-                    <div className="usuarioInfo">
-                      <h3>User Logged in</h3>
-                      <p>Name: {currentUser?.name}</p>
-                      <p>Email Address: {currentUser?.email}</p>
-                    </div>
-  
+                  <div className="dropdown-content">
+                    <a href="/Usuario">Perfil</a>
+                    {/* <a href="#">Settings</a> */}
+                    <button onClick={logOutGoogle}>Log out</button>
                   </div>
+                </li>
                 ) : (
                   <>
-                    <Link className="link" to="/login">
-                      Inicio Sesion
-                    </Link>
+                    <a href="/Login" className="a_doble">
+                      <FaUser size={25} className="a_icon" />
+                      <p>Iniciar Sesión</p>
+                    </a>
                   </>
                 )}
-              </a>
-
-              <div className="dropdown-content">
-                <a href="#">Profile</a>
-                <a href="#">Settings</a>
-                <button onClick={logOutGoogle}>Log out</button>
-              </div>
+              </li>
             </li>
           </ul>
         </div>

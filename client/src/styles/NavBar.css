@@ -21,6 +21,21 @@
   margin-right: 20vh;
   padding: 2rem;
 }
+.navbar p {
+  font-family: 'Josefin Slab', serif;
+}
+
+.navbar .a_doble{
+  display: grid;
+  grid-template-columns: 25% 80%;
+  place-items: center;
+  text-align: center;
+  column-gap: 0.5vw;
+  padding-right: 1vw;
+}
+.navbar .a_doble p{
+  padding-top: 3vh;
+}
 
 .navbar-right {
   display: flex;
@@ -62,11 +77,15 @@
   background-color: #ffffff;
   color: #091e3d;
   font-family: 'Josefin Slab', serif;
-  font-size: 16px;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
   /* left: 1vw; Adjust this value as needed */
+}
+
+.nav-item.dropdown .dropdown-content a, .nav-item.dropdown .dropdown-content button{
+  font-size: 2.5vh;
+  font-family: 'Josefin Slab', serif;
 }
 
 .nav-item.dropdown:hover .dropdown-content {
@@ -80,7 +99,7 @@
   display: block;
 }
 
-.nav-item.dropdown .dropdown-content a:hover {
+.nav-item.dropdown .dropdown-content a:hover, .nav-item.dropdown .dropdown-content button:hover {
   background-color: #f1f1f1;
 }
 
