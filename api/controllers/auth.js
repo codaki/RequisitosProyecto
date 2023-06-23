@@ -15,12 +15,14 @@ export const register = (req, res) => {
         //Hash the password and create a user
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(req.body.password, salt);
+        const picture = "https://static.vecteezy.com/system/resources/previews/008/844/895/non_2x/user-icon-design-free-png.png";
 
-        const q = "INSERT INTO users(name,email,password) VALUES (?);";
+        const q = "INSERT INTO users(name,email,password,picture) VALUES (?);";
         const values = [
             req.body.username,
             req.body.email,
-            hash];
+            hash,
+            picture];
 
         db.query(q, [values], (err, data) => {
             if (err) return console.log(err);

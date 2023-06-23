@@ -1,0 +1,38 @@
+.gridcentrado{
+    display: grid;
+    place-items: center;
+}
+.paginaUsuario{
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    min-width: 97vw;
+    background-color: rgb(234, 233, 231);
+}
+.usuario{
+    height: 60vh;
+    width: 40vw;
+    padding-top: 2vh;
+    grid-template-rows: repeat(3,33%);
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px 0 rgba(53, 55, 57, 0.646), 0 6px 20px 0 rgba(187, 187, 188, 0.613);
+}
+.usuario .usuarioImagen img{
+    width: 9vw;
+    height: 19vh;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.usuario .usuarioInfo h1{
+    font-size: 2.5vw;
+    font-weight: 600;
+    margin-bottom: 0;
+    font-family: 'Josefin Slab', serif;
+}
+.usuario .usuarioInfo p{
+    font-size: 1.5vw;
+    margin-bottom: 0;
+    font-family: 'Josefin Slab', serif;
+}
