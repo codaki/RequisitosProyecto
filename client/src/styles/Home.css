@@ -17,18 +17,29 @@ body {
     padding: 20px;
   }
   
-  .dashboard,
-  .sidebar {
+  .dashboard{
     background-color: #ffffff;
     border-radius: 4px;
     padding: 10px;
     margin-bottom: 20px;
   }
+  .sidebar {
+    background-color: #ffffff;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+    width:150vh;
+
+  }
   
-  .dashboard h2,
+  .dashboard h2{
+    font-family: 'Josefin Slab', serif;
+    font-size: 4vh;
+    margin-bottom: 10px;
+  }
   .sidebar h2 {
     font-family: 'Josefin Slab', serif;
-    font-size: 20px;
+    font-size: 7vh;
     margin-bottom: 10px;
   }
   
@@ -77,4 +88,32 @@ body {
     color: #091e3d;
     font-size: 16px;
   }
+  .asdfasdf {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    grid-gap: 20px; 
+    
+  }
   
+  .asdfasdf div {
+    background-color: #003049;
+    border-radius: 5%;
+
+  }
+  
+  .asdfasdf div img {
+    width: 100%;
+    height: 80%;
+  }
+  
+  .text-center {
+    text-align: center;
+    padding-top: 8%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+  .asdfasdf h4{
+    font-size: 200%;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    color: rgb(255, 255, 255);
+  }

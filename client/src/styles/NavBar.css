@@ -11,14 +11,14 @@
   color: #091e3d;
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-size: 1.1rem;
-  height: 30vh;
+  height: 20vh;
   padding: 1.5rem;
   width: 100%;
 }
 
 .navbar-left img {
-  height: 29vh;
-  width: 65vh;
+  height: 20vh;
+  width: 45vh;
   margin-right: 20vh;
   padding: 2rem;
 }
