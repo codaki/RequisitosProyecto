@@ -27,6 +27,7 @@
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
+    "react-youtube": "^10.1.0",
     "sass": "^1.58.0",
     "start": "^5.1.0",
     "styled-components": "^5.3.11",

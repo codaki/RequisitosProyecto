@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import Prueba from "./components/DateCalendarServerRequest";
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import Peliculas from "./pages/Peliculas";
 
 const Layout = () => {
   return (
@@ -27,6 +28,8 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />,
       },
+      
+
     ],
   },
   {
@@ -40,6 +43,8 @@ const router = createBrowserRouter([
   {
     path: "/calendario",
     element: <Prueba />,
+    path: "/Peliculas",
+    element: <Peliculas />,
   },
 ]);
 
