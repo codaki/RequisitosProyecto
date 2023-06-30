@@ -9,10 +9,12 @@ import axios from 'axios';
 
 const Navbar = () => {
   const { currentUser, logout } = useContext(AuthContext);
-
+  const navigate = useNavigate();
   const logOutGoogle = () => {
     googleLogout();
     logout();
+    localStorage.removeItem('searchKey');
+    window.location.reload();
   };
   const handleDivClick = () => {
     // Redirect to another site

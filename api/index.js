@@ -3,6 +3,7 @@ import authRoutes from "./routes/auth.js"
 import userRoutes from "./routes/users.js"
 import postRoutes from "./routes/posts.js"
 import comentRoutes from "./routes/coment.js"
+import legacyRoutes from "./routes/legacy.js"
 import cookieParser from "cookie-parser"
 import multer from "multer";
 
@@ -34,6 +35,7 @@ app.use("/api/auth",authRoutes)
 app.use("/api/user",userRoutes)
 app.use("/api/posts",postRoutes)
 app.use("/api/coment",comentRoutes)
+app.use("/api/legacy",legacyRoutes)
 
 
 app.listen(8800,()=>{

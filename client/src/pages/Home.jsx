@@ -14,12 +14,31 @@ const Home = () => {
   const URL_IMAGE = "https://image.tmdb.org/t/p/original";
 
 
+
   const [movies, setMovies] = useState([]);
-  const [searchKey, setSearchKey] = useState("");
+  const [searchKey, setSearchKey] = useState(localStorage.getItem('searchKey') || '');
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Cargando Peliculas" });
+  const [generoUser, setGeneroUser]= useState([]);
   const [playing, setPlaying] = useState(false);
   const navigate = useNavigate();
+
+  const fetchCategorias = async () => {
+    try{
+      const categorias = await axios.get(`/legacy/genre`);
+    //console.log(categorias.data);
+    setSearchKey(categorias.data[0].genero_nombre);
+    console.log(generoUser);
+    //const concatenatedStrings = generoUser.map(item => item.genero_nombre).join(' ');
+    // setSearchKey(generoUser[0].genero_nombre);
+    // console.log(searchKey)
+    }
+    catch(err){
+      console.log(err);
+    }
+    
+  };
+
   const fetchMovies = async (searchKey) => {
     const type = searchKey ? "search" : "discover"
     const {
@@ -37,12 +56,34 @@ const Home = () => {
     //   await fetchMovie(results[0].id);
     // }
   };
+
+  const fetchMovies1 = async (searchKey) => {
+    const type = searchKey ? "search" : "discover"
+    const {
+      data: { results },
+    } = await axios.get(`${API_URL}/${type}/movie`, {
+      params: {
+        api_key: API_KEY,
+        query: searchKey,
+      },
+    });
+    const limitedResults = results.slice(0, 8); // Retrieve only the first 8 results
+    setMovies(limitedResults);
+    setMovie(results[0]);
+    // if (results.length) {
+    //   await fetchMovie(results[0].id);
+    // }
+  };
+
   const enviarCatalgo = async()=>{
-    navigate("/Peliculas")
+    navigate("/Peliculas") 
   }
   useEffect(() => {
-    fetchMovies();
-  }, []);
+    localStorage.setItem('searchKey', searchKey); 
+    fetchCategorias();
+    fetchMovies(searchKey);
+    
+  }, [searchKey]);
 
   return (
     <div className="page">
@@ -61,8 +102,16 @@ const Home = () => {
     <div className="page-right">
       <div className="sidebar">
         {/* Add movie information updates here */}
-        <center><h2>Películas Trending</h2></center>
-        <div className="asdfasdf">
+        {searchKey? (
+        <center>
+          <h2>Recomendaciones para ti</h2>
+        </center>
+      ) : (
+        <center>
+          <h2>Peliculas Populares</h2>
+        </center>
+      )}
+        <div className="asdfasdf"> 
         {movies.map((movie) => (
           <div key={movie.id} >
             <img src={`${URL_IMAGE + movie.poster_path}`}onClick={() => enviarCatalgo()} />

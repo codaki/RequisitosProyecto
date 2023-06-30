@@ -50,7 +50,7 @@ export const login = (req, res) => {
         if (!isPasswordCorrect)
             return res.status(400).json("Usuario o Contraseña incorrecta!");
 
-        const token = jwt.sign({ id: data[0].id }, "jwtkey");
+        const token = jwt.sign({ id: data[0].id , categoria_id: data[0].categoria_id}, "jwtkey");
         const { password, ...other } = data[0];
 
         res.cookie("access_token", token, {
