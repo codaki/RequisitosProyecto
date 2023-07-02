@@ -12,7 +12,9 @@ app.use(cookieParser())
 
 
 app.use("/api/legacy",legacyRoutes)
-
+app.use("/",(req,res)=>{
+    res.send('Conexion al API')
+})
 
 
 app.listen(8801,()=>{
