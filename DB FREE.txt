@@ -1,0 +1,10 @@
+Host: sql10.freesqldatabase.com
+Database name: sql10630077
+Database user: sql10630077
+Database password: PLxe5fCgQd
+Port number: 3306
+
+
+genero_idtmdb
+
+jdbc:mysql://sql10.freesqldatabase.com:3306/sql10630077
