@@ -3,23 +3,20 @@ import legacyRoutes from "./routes/legacy.js"
 import cookieParser from "cookie-parser"
 import cors from "cors";
 import mysql from "mysql2/promise";
-// const app = express()
-// app.use(cors());
-// app.use(express.json())
-// app.use(cookieParser())
+const app = express()
+app.use(cors());
+app.use(express.json())
+app.use(cookieParser())
+
+app.use("/api/legacy",legacyRoutes)
+app.use("/",(req,res)=>{
+    res.send('Conexion al API')
+})
 
 
-
-
-// app.use("/api/legacy",legacyRoutes)
-// app.use("/",(req,res)=>{
-//     res.send('Conexion al API')
-// })
-
-
-// app.listen(8801,()=>{
-//     console.log("Conectado puerto 8801!")
-// })
+app.listen(8801,()=>{
+    console.log("Conectado puerto 8801!")
+})
 
 // const express = require('express');
 // const mysql = require('mysql');
@@ -66,22 +63,22 @@ import mysql from "mysql2/promise";
 //   console.log('Server is running on port 3001');
 // });
 
-const insertInotDB = async() =>{
-    const connection = await mysql.createConnection({
-        host: 'sql10.freesqldatabase.com',
-        user:'sql10630077',
-        password:'PLxe5fCgQd',
-        database:'sql10630077',
-        port: 3306,
-    })
-    try {
-        await connection.query(
-            "select * from genero;"
+// const insertInotDB = async() =>{
+//     const connection = await mysql.createConnection({
+//         host: 'sql10.freesqldatabase.com',
+//         user:'sql10630077',
+//         password:'PLxe5fCgQd',
+//         database:'sql10630077',
+//         port: 3306,
+//     })
+//     try {
+//         await connection.query(
+//             "select * from genero;"
             
-        )
-        onsole.log("se conecta")
-    } catch (e) {
-        console.log(e);
-    }
-};
-insertInotDB();
+//         )
+//         onsole.log("se conecta")
+//     } catch (e) {
+//         console.log(e);
+//     }
+// };
+// insertInotDB();

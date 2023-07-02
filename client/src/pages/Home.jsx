@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Home.css"
 import { FaPlus } from 'react-icons/fa';
 import Prueba from "../components/DateCalendarServerRequest";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 const Home = () => {
@@ -16,115 +16,156 @@ const Home = () => {
 
 
   const [movies, setMovies] = useState([]);
+  const [movies2, setMovies2] = useState([]);
   const [searchKey, setSearchKey] = useState(localStorage.getItem('searchKey') || '');
   const [trailer, setTrailer] = useState(null);
   const [movie, setMovie] = useState({ title: "Cargando Peliculas" });
-  const [generoUser, setGeneroUser]= useState([]);
+  const [generoUser, setGeneroUser] = useState([]);
   const [playing, setPlaying] = useState(false);
   const navigate = useNavigate();
 
   const fetchCategorias = async () => {
-    try{
+    try {
       const categorias = await axios.get(`/legacy/genre`);
-    //console.log(categorias.data);
-    setSearchKey(categorias.data[0].genero_nombre);
-    console.log(generoUser);
-    //const concatenatedStrings = generoUser.map(item => item.genero_nombre).join(' ');
-    // setSearchKey(generoUser[0].genero_nombre);
-    // console.log(searchKey)
+      //console.log(categorias.data);
+      setSearchKey(categorias.data[0].genero_nombre);
+      console.log(generoUser);
+      //const concatenatedStrings = generoUser.map(item => item.genero_nombre).join(' ');
+      // setSearchKey(generoUser[0].genero_nombre);
+      // console.log(searchKey)
     }
-    catch(err){
+    catch (err) {
       console.log(err);
     }
-    
+
   };
 
-  const fetchMovies = async (searchKey) => {
-    const type = searchKey ? "search" : "discover"
-    const {
-      data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
-      params: {
-        api_key: API_KEY,
-        query: searchKey,
-      },
-    });
-    const limitedResults = results.slice(0, 8); // Retrieve only the first 8 results
-    setMovies(limitedResults);
-    setMovie(results[0]);
-    // if (results.length) {
-    //   await fetchMovie(results[0].id);
-    // }
+  const fetchMoviesByGenre = async (genreId1, genreId2) => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId1}&language=es`
+      //`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId1},${genreId2}&language=es`
+    
+      );
+
+    if (!response.ok) {
+      // Manejar el error en caso de que la solicitud no sea exitosa
+      throw new Error('Error al obtener las películas.');
+    }
+    const data1 = await response.json();
+    const movies1 = data1.results.slice(0, 5);// Tomar las primeras 5 películas de la respuesta
+    //segundo genero
+    const response2 = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId2}&language=es`
+    );
+
+    if (!response2.ok) {
+      // Manejar el error en caso de que la solicitud no sea exitosa
+      throw new Error('Error al obtener las películas.');
+    }
+    const data2 = await response2.json();
+    const movies2 = data2.results.slice(0, 5);// Tomar las primeras 5 películas de la respuesta
+
+    // Hacer algo con el array de películas obtenidas
+    console.log(movies1);
+    setMovies(movies1);
+    console.log(movies2);
+    setMovies2(movies2);
+    // fetchMoviesByGenre(28); // Ejemplo con el género de acción (ID 28)
   };
 
-  const fetchMovies1 = async (searchKey) => {
-    const type = searchKey ? "search" : "discover"
-    const {
-      data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
-      params: {
-        api_key: API_KEY,
-        query: searchKey,
-      },
-    });
-    const limitedResults = results.slice(0, 8); // Retrieve only the first 8 results
-    setMovies(limitedResults);
-    setMovie(results[0]);
-    // if (results.length) {
-    //   await fetchMovie(results[0].id);
-    // }
-  };
+    const fetchMovies = async (searchKey) => {
+      const type = searchKey ? "search" : "discover"
+      const {
+        data: { results },
+      } = await axios.get(`${API_URL}/${type}/movie`, {
+        params: {
+          api_key: API_KEY,
+          query: searchKey,
+        },
+      });
+      const limitedResults = results.slice(0, 8); // Retrieve only the first 8 results
+      setMovies(limitedResults);
+      setMovie(results[0]);
+      // if (results.length) {
+      //   await fetchMovie(results[0].id);
+      // }
+    };
 
-  const enviarCatalgo = async()=>{
-    navigate("/Peliculas") 
-  }
-  useEffect(() => {
-    localStorage.setItem('searchKey', searchKey); 
-    fetchCategorias();
-    fetchMovies(searchKey);
-    
-  }, [searchKey]);
+    const fetchMovies1 = async (searchKey) => {
+      const type = searchKey ? "search" : "discover"
+      const {
+        data: { results },
+      } = await axios.get(`${API_URL}/${type}/movie`, {
+        params: {
+          api_key: API_KEY,
+          query: searchKey,
+        },
+      });
+      const limitedResults = results.slice(0, 8); // Retrieve only the first 8 results
+      setMovies(limitedResults);
+      setMovie(results[0]);
+      // if (results.length) {
+      //   await fetchMovie(results[0].id);
+      // }
+    };
 
-  return (
-    <div className="page">
-    
-    <div className="page-center">
-      <div className="dashboard">
-        {/* Add your calendar component here */}
-        <h2>Calendario</h2>
+    const enviarCatalgo = async () => {
+      navigate("/Peliculas")
+    }
+    useEffect(() => {
+      // localStorage.setItem('searchKey', searchKey); 
+      // fetchCategorias();
+      //fetchMovies(searchKey);
+      fetchMoviesByGenre(99, 27);
 
-        <div className="calendario">
-          <Prueba />
-        </div>
+    }, [searchKey]);
 
-      </div>
-    </div>
-    <div className="page-right">
-      <div className="sidebar">
-        {/* Add movie information updates here */}
-        {searchKey? (
-        <center>
-          <h2>Recomendaciones para ti</h2>
-        </center>
-      ) : (
-        <center>
-          <h2>Peliculas Populares</h2>
-        </center>
-      )}
-        <div className="asdfasdf"> 
-        {movies.map((movie) => (
-          <div key={movie.id} >
-            <img src={`${URL_IMAGE + movie.poster_path}`}onClick={() => enviarCatalgo()} />
-            <h4 className="text-center">{movie.title}</h4>
+    return (
+      <div className="page">
+
+        <div className="page-center">
+          <div className="dashboard">
+            {/* Add your calendar component here */}
+            <h2>Calendario</h2>
+
+            <div className="calendario">
+              <Prueba />
+            </div>
+
           </div>
-        ))}
-      </div>
-        
+        </div>
+        <div className="page-right">
+          <div className="sidebar">
+            {/* Add movie information updates here */}
+            {searchKey ? (
+              <center>
+                <h2>Recomendaciones para ti</h2>
+              </center>
+            ) : (
+              <center>
+                <h2>Peliculas Populares</h2>
+              </center>
+            )}
+            <div className="asdfasdf">
+              {movies.map((movie) => (
+                <div key={movie.id} >
+                  <img src={`${URL_IMAGE + movie.poster_path}`} onClick={() => enviarCatalgo()} />
+                  <h4 className="text-center">{movie.title}</h4>
+                </div>
+              ))}
+              {movies2.map((movie) => (
+                <div key={movie.id} >
+                  <img src={`${URL_IMAGE + movie.poster_path}`} onClick={() => enviarCatalgo()} />
+                  <h4 className="text-center">{movie.title}</h4>
+                </div>
+              ))}
+            </div>
 
-      </div>
-    </div>
-  </div>
-  )
 
-}
-export default Home
+          </div>
+        </div>
+      </div>
+    )
+
+  }
+  export default Home

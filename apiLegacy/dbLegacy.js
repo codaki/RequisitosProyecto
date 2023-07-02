@@ -7,12 +7,12 @@ export const db = mysql.createPool({
     database: 'sql10630077',
   });
   
-  // Test the database connection
-  db.getConnection((err, connection) => {
-    if (err) {
-      console.error('Error connecting to the database: ', err);
-    } else {
-      console.log('Connected to the database.');
-      connection.release();
-    }
-  });
+  // // Test the database connection
+  // db.getConnection((err, connection) => {
+  //   if (err) {
+  //     console.error('Error connecting to the database: ', err);
+  //   } else {
+  //     console.log('Connected to the database.');
+  //     connection.release();
+  //   }
+  // });

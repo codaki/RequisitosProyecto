@@ -21,7 +21,7 @@ const Peliculas = () => {
     const type = searchKey ? "search" : "discover"
     const {
       data: { results },
-    } = await axios.get(`${API_URL}/${type}/movie`, {
+    } = await axios.get(`${API_URL}/${type}/movie?language=es`, {
       params: {
         api_key: API_KEY,
         query: searchKey,
@@ -35,7 +35,7 @@ const Peliculas = () => {
   };
 
   const fetchMovie = async (id) => {
-    const { data } = await axios.get(`${API_URL}/movie/${id}`, {
+    const { data } = await axios.get(`${API_URL}/movie/${id}?language=es`, {
       params: {
         api_key: API_KEY,
         append_to_response: "videos",
@@ -185,6 +185,7 @@ const Peliculas = () => {
           <div key={movie.id} onClick={() => selectMovie(movie)} className="tamanios">
             <img src={`${URL_IMAGE + movie.poster_path}`} />
             <h4 className="text-center">{movie.title}</h4>
+            
           </div>
         ))}
       </div>
