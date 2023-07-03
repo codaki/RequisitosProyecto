@@ -8,6 +8,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Peliculas from "./pages/Peliculas";
 import Usuario from "./pages/Usuario";
+import Encuesta from "./pages/Encuesta";
 
 const Layout = () => {
   return (
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/Encuesta",
+    element: <Encuesta />,
   },
 ]);
 
