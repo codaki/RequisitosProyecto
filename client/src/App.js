@@ -9,6 +9,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import Peliculas from "./pages/Peliculas";
 import Usuario from "./pages/Usuario";
 import Encuesta from "./pages/Encuesta";
+import EncuestaS from "./pages/EncuestaS";
 
 const Layout = () => {
   return (
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
     path: "/Encuesta",
     element: <Encuesta />,
   },
+  {
+    path: "/EncuestaS",
+    element: <EncuestaS />,
+  }
 ]);
 
 function App({ children }) {
