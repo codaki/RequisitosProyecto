@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import "../styles/Quiz.scss"
+import gifImage from "../img/vaquita.gif"
 
 const QuizComponent = () => {
 
@@ -148,6 +149,7 @@ const QuizComponent = () => {
   return (
     <div className="quiz-container" id="quiz">
       {currentQuiz < quizData.length ? loadQuiz() : showResult()}
+      <img src={gifImage} alt="GIF" className="gif" />
     </div>
   );
 };
