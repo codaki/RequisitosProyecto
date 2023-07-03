@@ -8,3 +8,10 @@ Port number: 3306
 genero_idtmdb
 
 jdbc:mysql://sql10.freesqldatabase.com:3306/sql10630077
+
+
+api-legacy.cjhiyogsp8mm.us-east-2.rds.amazonaws.com
+ const categorias = await axios.get(`https://poster-users-profile.up.railway.app/api/legacy/10`);
+    //console.log(categorias.data);
+    const numbers = categorias.data.map(item => item.genero_idtmdb).join(', ');
+    console.log(numbers)
