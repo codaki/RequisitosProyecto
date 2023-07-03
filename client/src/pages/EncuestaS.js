@@ -149,6 +149,7 @@ const QuizComponent = () => {
   return (
     <div className="quiz-container" id="quiz">
       {currentQuiz < quizData.length ? loadQuiz() : showResult()}
+
       <img src={gifImage} alt="GIF" className="gif" />
     </div>
   );

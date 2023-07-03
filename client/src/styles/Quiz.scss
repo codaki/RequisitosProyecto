@@ -30,10 +30,20 @@ body{
 
 .gif {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 0rem;
+  left: -9.5rem;
   width: 25rem; /* Adjust the width as per your GIF dimensions */
   height: auto; /* Adjust the height proportionally */
+  animation: slideAnimation 10s linear infinite; 
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(320%); /* Adjust the distance to move the GIF */
+  }
 }
 
 
