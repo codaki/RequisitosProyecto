@@ -111,8 +111,8 @@ const QuizComponent = () => {
     const currentQuizData = quizData[currentQuiz];
     return (
         <div className="quiz-header">
-      <h2 id="question">{currentQuizData.question}</h2>
-      <ul>
+      <h2 className="h2cami" id="question">{currentQuizData.question}</h2>
+      <ul className='ul77'>
         <li>
           <input
             type="range"
@@ -127,7 +127,7 @@ const QuizComponent = () => {
           <span className="range-value">{selectedValue}</span> {/* Display the selected value */}
         </li>
       </ul>
-      <button id="submit" onClick={handleAnswerSubmit}>
+      <button className="button77" id="submit" onClick={handleAnswerSubmit}>
         Enviar
       </button>
     </div>
@@ -140,8 +140,11 @@ const QuizComponent = () => {
 
     return (
       <div>
-        <h2>¡Gracias por responder! Tu perfil se ha asignado correctamente 👀</h2>
-        <button onClick={() => window.location.reload()}>Recargar</button>
+        <h2 className="h2cami" >¡Gracias por responder! Tu perfil se ha asignado correctamente 👀</h2>
+        <a href="http://localhost:3000/">Perfil
+        <button className="button77" onClick={() => window.location.reload()}>Recargar</button>
+        </a>
+      
       </div>
     );
   };

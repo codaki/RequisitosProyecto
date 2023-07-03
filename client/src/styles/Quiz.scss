@@ -2,21 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
 
-*{
-  box-sizing: border-box;
-}
-body{
-  background-color: white;
-  background-image: linear-gradient(315deg, white 0%, #f5f7f7 100%);
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  overflow: hidden;
-  margin: 0;
-  font-size: 0.1rem;
-}
 
 .quiz-container{
   background-color: #fff;
@@ -51,25 +36,25 @@ body{
   padding: 4rem;
 }
 
-h2{
+.h2cami{
   padding: 1rem;
   text-align: center;
   margin: 0;
   font-size: 1.3rem;
 }
 
-ul{
+.ul77{
   list-style-type: none;
   padding: 0;
 }
-ul li{
+.ul77 li{
   font-size: 0.4rem;
   margin: 1rem 0;
 }
-ul li label{
+.ul77 li label{
   cursor: pointer;
 }
-button{
+.button77{
   background-color: #000;
   color: #fff;
   border: none;
@@ -80,29 +65,29 @@ button{
   font-family: inherit;
   padding: 1.3rem;
 }
-button:hover{
+.button77:hover{
   background-color: #b8c6db;
   color: #000;
 }
-button:focus{
+.button77:focus{
   outline: none;
   background-color: white;
   color: #000;
 }
 
-ul li input[type="range"] {
+.ul77 li input[type="range"] {
   width: 80%;
   height: 1.5rem;
   margin: 0 auto;
 }
 
 
-ul li {
+.ul77 li {
   display: flex;
   align-items: center;
   justify-content: center;
 
-  input[type="range"] {
+  .answer[type="range"] {
     width: 80%;
     height: 1.5rem;
     margin: 0;
@@ -110,15 +95,15 @@ ul li {
   }
 }
 
-input[type="range"] {
+.answer[type="range"] {
   width: 80%;
   height: 1.5rem;
   margin: 0 auto;
-  color: #000;
+  color: #000 !important;
   /* Slider Track */
   &::-webkit-slider-runnable-track {
     background-color: #ccc;
-    height: 4px;
+    height: 8px;
   }
   
   &::-moz-range-track {
@@ -144,7 +129,7 @@ input[type="range"] {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-color: black;
+    background-color: black !important;
     transition: background-color 0.3s ease-in-out;
   }
   
@@ -152,39 +137,39 @@ input[type="range"] {
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 50%;
-    background-color: black;
+    background-color: black !important;
     transition: background-color 0.3s ease-in-out;
   }
   
   /* Animation on Hover */
   &:hover::-webkit-slider-thumb {
-    background-color: black;
+    background-color: black !important;
   }
   
   &:hover::-moz-range-thumb {
-    background-color: black;
+    background-color: black !important;
   }
   
   &:hover::-ms-thumb {
-    background-color: black;
+    background-color: black !important;
   }
   
   /* Animation on Active */
   &:active::-webkit-slider-thumb {
-    background-color: black;
+    background-color: black !important;
   }
   
   &:active::-moz-range-thumb {
-    background-color: black;
+    background-color: black !important;
   }
   
   &:active::-ms-thumb {
-    background-color: black;
+    background-color: black !important;
   }
 }
 
 
-ul li {
+.ul77 li {
   position: relative;
 
   .range-value {
