@@ -12,6 +12,138 @@ const Encuesta = () => {
   const [sliderValue8, setSliderValue8] = useState(0);
   const [sliderValue9, setSliderValue9] = useState(0);
   const [sliderValue10, setSliderValue10] = useState(0);
+  const [perfil, setPerfil] = useState(1);
+
+  // 1	Jorge -> 0 en todo por defecto
+  // 2	Comediante -> puntuación alta en comedia
+  // 3	Terrorífico -> puntuación alta en terror y thriller
+  // 4	Misterioso -> puntuación alta en misterio y crimen
+  // 5	Fantasioso -> puntuación alta en fantasía, familia y ciencia ficción, ademas de accion y aventura
+  // 6	Nerd -> puntuación alta en historia, guerra y documentales
+  // 7	Japones -> puntuación alta en anime
+  // 8	Drama queen -> puntación alta en drama y romance
+  // 9	Animado -> puntuación alta en animación y familia
+  // 10	Theater kid -> puntación alta en musicales y/o tv
+  // 11	Watallarin -> puntuación alta en todos o varios
+
+  const seleccionarPerfil = () => {
+    switch (true) {
+      case perfilJorge():
+        setPerfil(1);
+        break;
+      case perfilComediante():
+        setPerfil(2);
+        break;
+      case perfilTerrorifico():
+        setPerfil(3);
+        break;
+      case perfilMisterioso():
+        setPerfil(4);
+        break;
+      case perfilFantasioso():
+        setPerfil(5);
+        break;
+      case perfilNerd():
+        setPerfil(6);
+        break;
+      case perfilJapones():
+        setPerfil(7);
+        break;
+      case perfilDQueen():
+        setPerfil(8);
+        break;
+      case perfilAnimado():
+        setPerfil(9);
+        break;
+      case perfilTKid():
+        setPerfil(10);
+        break;
+      default:
+        setPerfil(11);
+    }
+  };
+  
+
+  const perfilJorge = () => {
+    if (setSliderValue1 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilComediante = () => {
+    if (setSliderValue5 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilTerrorifico = () => {
+    if (setSliderValue2 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilMisterioso = () => {
+    if (setSliderValue10 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilFantasioso = () => {
+    if (setSliderValue1 > 7 || setSliderValue3 > 7){
+      return true;
+    } 
+
+    return false;
+  }
+
+  const perfilNerd = () => {
+    if (setSliderValue4 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilJapones = () => {
+    if (setSliderValue8 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilDQueen = () => {
+    if (setSliderValue6 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilAnimado = () => {
+    if (setSliderValue3 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
+  const perfilTKid = () => {
+    if (setSliderValue7 > 7 || setSliderValue9 > 7){
+      return true;
+    } 
+
+    return false;
+  };
+
 
   const handleSliderChange1 = (event) => {
     setSliderValue1(event.target.value);
@@ -57,7 +189,7 @@ const Encuesta = () => {
         <section id="secc2">
           <fieldset id="cuentanos2">
             <legend>
-              <h1>ENCUESTA DE GUSTOS CINEMATOGRAFICOS</h1>
+              <h1>ENCUESTA</h1>
             </legend>
             <form className="formulario">
               <table>
@@ -65,14 +197,14 @@ const Encuesta = () => {
                   <tr>
                     <td colSpan={3}>
                       <legend>
-                        <h4>Ayudanos llenando todas las preguntas</h4>
+                        <h4>¿Qué peliculas quieres ver hoy?</h4>
                       </legend>
                     </td>
                   </tr>
                   <tr>
                     <td colSpan={1}>
                       <legend>
-                        <h5>aqui va la</h5>
+                        <h5>Si tuvieras que comparar tu emoción al ver películas de acción y aventura con la sensación de subir a una montaña rusa, ¿en qué nivel estarías?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -90,7 +222,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas de terror y thriller fueran emociones intensas, ¿qué tan dispuesto estarías a enfrentar tus miedos?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -108,7 +240,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas de animación y fantasía fueran mundos reales, ¿qué tan emocionado estarías por estar en ellos solo o con familia?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -132,7 +264,7 @@ const Encuesta = () => {
                   <tr>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas históricas fueran puertas al pasado, ¿qué tan ansioso estarías por cruzar el umbral? </h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -150,7 +282,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas de comedia fueran alimentos, ¿qué tan picante te gusta que sean?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -168,7 +300,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>¿Cuántos corazones le darías a las comedias románticas y llenas de drama? </h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -192,7 +324,7 @@ const Encuesta = () => {
                   <tr>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si la música fuera un viaje especial, ¿qué tanto te gustaría tu viaje musical?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -210,7 +342,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas de anime fueran viajes lejanos, ¿hasta qué lejano universo estarías dispuesto a explorar? </h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -228,7 +360,7 @@ const Encuesta = () => {
                     </td>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>En una escala del 1 al 10, ¿qué tan dispuesto estarías a sacrificar horas de sueño para seguir viendo una serie adictiva?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -247,7 +379,7 @@ const Encuesta = () => {
                   </tr>
                     <td colSpan={1}>
                       <legend>
-                        <h5>Escriba en dólares su presupuesto estimado mensual destinado a mantener a su mascota</h5>
+                        <h5>Si las películas de misterio fueran enigmas por resolver, ¿qué tan intrincado te gusta que sea el rompecabezas?</h5>
                       </legend>
                       <div className="range-input">
                         <input
@@ -265,7 +397,9 @@ const Encuesta = () => {
                     </td>
                 </tbody>
               </table>
-              <input type="submit" id="envio2" />
+              <input type="submit" id="envio2" 
+                onClick={seleccionarPerfil}
+              />
             </form>
             <br />
           </fieldset>
